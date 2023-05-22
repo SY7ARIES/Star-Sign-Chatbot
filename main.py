@@ -263,6 +263,13 @@ comp = Fore.BLUE
 user = Fore.WHITE
 
 #-----------------Greeting
+print(Fore.LIGHTMAGENTA_EX + 'Loading...')
+source = audio.play_tone(1, 600, 1)
+time.sleep(3)
+print("\nLoaded")
+source = audio.play_tone(0.25, 1500, 1)
+time.sleep(1)
+print('\n')
 
 while True:
   print(comp + random.choice(greeting))
@@ -304,10 +311,7 @@ while len(name.split()) > 1 or len(name.split()) < 1:
     name = 'no'
     break
   elif len(name.split()) > 1:
-    print(
-      comp +
-      "Wow, I'm sorry but I am really bad at memorising, your name is sooooo long \U0001F635. Just give me your first name please =.="
-    )
+    print(comp + "Wow, I'm sorry but I am really bad at memorising, your name is sooooo long \U0001F635. Just give me your first name please =.=")
     name = input(user)
     if name.split() == 1:
       break
@@ -324,9 +328,7 @@ if name == 'no':
 else:
   name = name.capitalize()
   print(comp + 'Awww', name, "That's such a",random.choice(adj), "name! UwU")
-  source = audio.play_file("bgm.wav")
-  print(
-    comp + "\nMy name is Asta, a star sign expert! I am an Aries, do you know what your", random.choice(sign), "is?")
+  print(comp + "\nMy name is Asta, a star sign expert! I am an Aries, do you know what your", random.choice(sign), "is?")
 
 ynstar = (input(user)).lower()
 
@@ -351,10 +353,7 @@ if know == True:
   #------------------if user fake know their star sign
 
   while starknow == False:
-    print(
-      comp +
-      "I'm sorry, but perhaps you didn't insert an existing constellation, or maybe you inserted the wrong spelling. \nWould you like to try again or you want me to check your",
-      random.choice(sign), "again? (type 'try again' to try again)")
+    print(comp + "I'm sorry, but perhaps you didn't insert an existing constellation, or maybe you inserted the wrong spelling. \nWould you like to try again or you want me to check your", random.choice(sign), "again? (type 'try again' to try again)")
     rechoose = ((TextBlob(input(user))).correct()).lower()
     if 'try again' in rechoose:
       print(comp + 'What is your', random.choice(sign), "\b?")
