@@ -116,12 +116,12 @@ Ariesfact = [
   "Things that Aries never hesitate in: To change things they don 't like",
   "Things Aries truly want: Trust, loyalty, and respect",
   "Things Aries enjoy: Being adventurous and bossy on others",
-  "Things Aries get frustrated with: When it takes a lot of time in explaining things to others."
-  "Things Aries hate: To repeat the same things again and again."
-  "Things Aries do when ignored: Talk louder"
-  "Best adventurous partner for Aries: Leo"
-  "The hardest thing for Aries: The hardest thing for them is to sit back and keep quiet especially when they know whatever happening is unnecessary and a waste of time."
-  "Playlist of Aries: Perfect romantic songs when romantic, songs indicating rage when they are angry. Basically, they are. music lovers and listen to genres depending on their mood."
+  "Things Aries get frustrated with: When it takes a lot of time in explaining things to others.",
+  "Things Aries hate: To repeat the same things again and again.",
+  "Things Aries do when ignored: Talk louder",
+  "Best adventurous partner for Aries: Leo",
+  "The hardest thing for Aries: The hardest thing for them is to sit back and keep quiet especially when they know whatever happening is unnecessary and a waste of time.",
+  "Playlist of Aries: Perfect romantic songs when romantic, songs indicating rage when they are angry. Basically, they are. music lovers and listen to genres depending on their mood.",
   "Best gift for Aries: Athletic items, clothing or work-related things."
 ]
 Taurusfact = [
@@ -282,8 +282,7 @@ while True:
 emo = greetingreply.polarity
 
 if ' and you' in greetingreply or 'about you' in greetingreply or 'you?' in greetingreply or 'are you' in greetingreply or 'hbu' in greetingreply or 'wbu' in greetingreply:
-  print(comp + "Oh, I am having a" + random.choice(good) +
-        " day so far! Thank you for asking!\n\nSo, what's your name?")
+  print(comp + "Oh, I am having a" + random.choice(good) + " day so far! Thank you for asking!\n\nSo, what's your name?")
 elif emo > 0:
   print(comp + "That's amazing! \n\nSo, what's your name?")
 elif emo == 0:
@@ -303,31 +302,27 @@ if "my name is " in name or "i'm " in name or "i am " in name:
   name = name.replace("i am ", '')
 
 while len(name.split()) > 1 or len(name.split()) < 1:
-  if "don't" in name or "no" in name:
-    print(
-      comp +
-      "Oh, that's fine, I'm sorry for any offense, I swear didn't mean that \U0001F622\n\nAnyways, my name is Asta, a star Sign expert. I am an Aries, do you know what your",
-      random.choice(sign), "is?")
+  if "don't" in name or "no" in name or "not" in name:
+    print(comp + "Oh, that's fine, I'm sorry for any offense, I swear didn't mean that \U0001F622\n\nAnyways, my name is Asta, a star Sign expert. I am an Aries, do you know what your", random.choice(sign), "is?")
     name = 'no'
     break
-  elif len(name.split()) > 1:
-    print(comp + "Wow, I'm sorry but I am really bad at memorising, your name is sooooo long \U0001F635. Just give me your first name please =.=")
+  if len(name.split()) > 1:
+    print(comp + "\nWow, I'm sorry but I am really bad at memorising, your name is sooooo long \U0001F635. Just give me your first name please =.=")
     name = input(user)
-    if name.split() == 1:
+    if len(name.split()) == 1:
       break
-  elif len(name.split()) < 1:
+  if len(name.split()) < 1:
     print(comp + "Oh come on, don't kill our chat 🥹")
     print(comp + "What's your first name?")
     name = input(user)
-    if name.split() == 1:
+    if len(name.split()) == 1:
       break
-  break
 
 if name == 'no':
   pass
 else:
   name = name.capitalize()
-  print(comp + 'Awww', name, "That's such a",random.choice(adj), "name! UwU")
+  print(comp + 'Awww', name, "That's such a",random.choice(adj), "name! ☆*:.o(≧▽≦)o.:*☆")
   print(comp + "\nMy name is Asta, a star sign expert! I am an Aries, do you know what your", random.choice(sign), "is?")
 
 ynstar = (input(user)).lower()
@@ -600,47 +595,73 @@ if astro_sign[-1] == 's':
 else:
   starplu = 's'
 
+#-------------------fun facts
+
 print(comp + '\nWould you like to know some interesting facts of ' + astro_sign + starplu + "?")
 facts = (input(user)).lower()
 
-while True:
+
+funfact = False
+for x in yes:
+  if x in facts:
+    funfact = True
+  
+  
+while funfact == True:
   funfact = False
   for x in yes:
     if x in facts:
       funfact = True
 
-  def pfunc(n):
-    print(Fore.LIGHTMAGENTA_EX + "\n" + random.choice(n))
-    
-  if funfact == True:
-    if astro_sign == 'Aries':
-      pfunc(Ariesfact)
-    if astro_sign == 'Taurus':
-      pfunc(Taurusfact)
-    if astro_sign == 'Gemini':
-      pfunc(Geminifact)
-    if astro_sign == 'Cancer':
-      pfunc(Cancerfact)
-    if astro_sign == 'Leo':
-      pfunc(Leofact)
-    if astro_sign == 'Virgo':
-      pfunc(Virgofact)
-    if astro_sign == 'Libra':
-      pfunc(Librafact)
-    if astro_sign == 'Scorpio':
-      pfunc(Scorpiofact)
-    if astro_sign == 'Sagittarius':
-      pfunc(Sagittariusfact)
-    if astro_sign == 'Capricorn':
-      pfunc(Capricornfact)
-    if astro_sign == 'Aquarius':
-      pfunc(Aquariusfact)
-    if astro_sign == 'Pisces':
-      pfunc(Piscesfact)
+  if funfact == False:
+    funfact == False
+    break
+
+  if astro_sign == 'Aries':
+      fact = Ariesfact
+  if astro_sign == 'Taurus':
+    fact = Taurusfact
+  if astro_sign == 'Gemini':
+    fact = Geminifact
+  if astro_sign == 'Cancer':
+    fact = Cancerfact
+  if astro_sign == 'Leo':
+    fact = Leofact
+  if astro_sign == 'Virgo':
+    fact = Virgofact
+  if astro_sign == 'Libra':
+    fact = Librafact
+  if astro_sign == 'Scorpio':
+    fact = Scorpiofact
+  if astro_sign == 'Sagittarius':
+    fact = Sagittariusfact
+  if astro_sign == 'Capricorn':
+    fact = Capricornfact
+  if astro_sign == 'Aquarius':
+    fact = Aquariusfact
+  if astro_sign == 'Pisces':
+    fact = Piscesfact
+  
+  x = 0
+  while x >= 0:
+    print(Fore.LIGHTMAGENTA_EX + "\n" + fact[x])
     print(comp + "\nWould you like to know more facts about your", random.choice(sign) + "?")
     facts = input(user)
-    
-  else:  
-    print(comp + "\nAlright then, it's nice to talk to you. However I got something important to do now, so I hope we can chat later in the fure. Cya~")
-    print(error + "\nAsta left the chat X﹏X")
-    break
+    funfact = False
+    for y in yes:
+      if y in facts:
+        funfact = True
+    if funfact == True:
+      x += 1
+      if fact[x-1] == fact[-1]:
+        print(comp + "\nOops, I'm sorry but I forgot I have ran out of fun facts about", astro_sign + starplu +"!")
+        time.sleep(2)
+        facts = 'no'
+        break
+    if funfact == False:
+      facts = 'no'
+      break  
+if funfact == False:  
+  print(comp + f"\nAlright then, it's nice to talk to you, {name}. However I got something important to do now, so I hope we can chat later in the fure. \nCya~")
+  time.sleep(2)
+  print(error + "\nAsta left the chat X﹏X")
